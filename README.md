@@ -27,14 +27,15 @@ Olist is a Brazilian e-commerce marketplace. The dataset spans 9 relational tabl
 
 ## Project Structure
 
+```
 AI-Sales-Analyst/
 ├── notebooks/
-│ └── 01_data_exploration.ipynb # Data cleaning, delivery & revenue analysis, customer cohorts
+│   └── 01_data_exploration.ipynb   # Data cleaning, delivery & revenue analysis, customer cohorts
 ├── sql/
-│ └── analysis.sql # Business-question SQL: revenue, segmentation, retention, delivery
+│   └── analysis.sql                # Business-question SQL: revenue, segmentation, retention, delivery
 ├── requirements.txt
 └── .gitignore
-
+```
 
 ## Analysis Covered
 
@@ -43,6 +44,8 @@ AI-Sales-Analyst/
 - Delivery performance: average/median delivery time, late-delivery rate by year
 - Revenue analysis: monthly revenue trend, month-over-month change, category & product-level breakdowns
 - Customer cohort analysis: new vs. returning customers by month, retention by months-since-first-purchase
+- Customer satisfaction: review score analysis, correlated against delivery performance and product category
+- Visualizations: revenue trend, top categories, late delivery rate by year, review score vs. delivery status
 
 **SQL**
 - Monthly revenue, order volume, and AOV trends (with `LAG()` for MoM growth)
@@ -59,23 +62,27 @@ AI-Sales-Analyst/
 - **Top categories by revenue**: health & beauty, watches & gifts, bed/bath/table, sports & leisure, and computer accessories.
 - **Payments**: Credit card dominates at 78.3% of payment value, followed by boleto (17.9%).
 - **Customer retention**: The customer base is growing but overwhelmingly driven by new customers — the repeat-purchase rate is only ~3%, and retention drops off sharply after the first purchase. This is the project's core business recommendation area: focus on second-purchase incentives and post-purchase engagement.
+- **Customer satisfaction**: Delivery reliability is a major driver of satisfaction — orders delivered on time average a 4.21/5 review score, vs. 2.57/5 for late orders (correlation: -0.27).
+
+![Review score by delivery status](notebooks/chart_review_vs_delivery.png)
+![Monthly revenue trend](notebooks/chart_revenue_trend.png)
 
 ## Setup
 
 1. Clone the repo:
-```bash
+   ```bash
    git clone https://github.com/anujydv18-oss/AI-Sales-Analyst.git
    cd AI-Sales-Analyst
-```
+   ```
 2. Download the [Olist dataset from Kaggle](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce) and place the CSVs in `data/raw/` (this folder is gitignored).
 3. Install dependencies:
-```bash
+   ```bash
    pip install -r requirements.txt
-```
+   ```
 4. Run the notebook:
-```bash
+   ```bash
    jupyter notebook notebooks/01_data_exploration.ipynb
-```
+   ```
 5. For the SQL analysis, load the CSVs into MySQL and run `sql/analysis.sql`.
 
 ## Tools Used
