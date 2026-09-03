@@ -6,7 +6,7 @@ An end-to-end sales & customer analytics project built on the [Olist Brazilian E
 
 - [x] **Phase 1 — Python (pandas):** Data cleaning, delivery performance analysis, revenue analysis, customer cohort/retention analysis
 - [x] **Phase 2 — SQL:** Revenue trends, customer segmentation, seller performance, delivery & payment analysis
-- [ ] **Phase 3 — Power BI:** Interactive dashboard for sales, delivery, and customer metrics
+- [x] **Phase 3 — Power BI:** Interactive dashboard for sales, delivery, and customer metrics
 - [ ] **Phase 4 — AI Integration Layer:** Natural-language querying / AI-assisted insights on top of the analysis
 - [ ] **Phase 5 — Machine Learning:** Predictive modeling (e.g. churn, delivery delay, or demand forecasting)
 
@@ -30,9 +30,17 @@ Olist is a Brazilian e-commerce marketplace. The dataset spans 9 relational tabl
 ```
 AI-Sales-Analyst/
 ├── notebooks/
-│   └── 01_data_exploration.ipynb   # Data cleaning, delivery & revenue analysis, customer cohorts
+│   ├── 01_data_exploration.ipynb   # Data cleaning, delivery, revenue, customer cohort & review-score analysis
+│   ├── chart_revenue_trend.png
+│   ├── chart_top_categories.png
+│   ├── chart_late_delivery.png
+│   └── chart_review_vs_delivery.png
 ├── sql/
 │   └── analysis.sql                # Business-question SQL: revenue, segmentation, retention, delivery
+├── dashboard/
+│   ├── sales_overview.png
+│   ├── delivery_performance.png
+│   └── customer_satisfaction.png
 ├── requirements.txt
 └── .gitignore
 ```
@@ -67,6 +75,21 @@ AI-Sales-Analyst/
 ![Review score by delivery status](notebooks/chart_review_vs_delivery.png)
 ![Monthly revenue trend](notebooks/chart_revenue_trend.png)
 
+## Power BI Dashboard
+
+A 3-page interactive dashboard built on the same tables used in the Python and SQL analysis, with DAX measures, synced slicers (month, state), and a consistent theme.
+
+**Sales Overview** — revenue trend, top categories, payment mix, revenue by state
+![Sales Overview](dashboard/sales_overview.png)
+
+**Delivery Performance** — late delivery rate by year, state, seller, and month
+![Delivery Performance](dashboard/delivery_performance.png)
+
+**Customer & Satisfaction** — new vs. returning customers, review score by delivery status, category ratings
+![Customer & Satisfaction](dashboard/customer_satisfaction.png)
+
+*Note: the category review-score chart is filtered to categories with ≥50 orders to avoid small-sample bias; a couple of categories with very few orders (e.g. under 15) can otherwise show misleadingly high averages.*
+
 ## Setup
 
 1. Clone the repo:
@@ -87,8 +110,8 @@ AI-Sales-Analyst/
 
 ## Tools Used
 
-**Current:** Python (pandas, matplotlib, seaborn), Jupyter, SQL (MySQL)
-**Planned:** Power BI, Machine Learning (Python), AI integration layer
+**Current:** Python (pandas, matplotlib, seaborn), Jupyter, SQL (MySQL), Power BI (DAX, Power Query)
+**Planned:** Machine Learning (Python), AI integration layer
 
 ## Author
 
